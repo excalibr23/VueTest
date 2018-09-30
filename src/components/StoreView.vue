@@ -9,16 +9,18 @@
             <b-row
                 v-for="item in getStoreItems"
                 v-bind:key="item.itemid"
-                v-bind:title="item.description"
                 >
-            <p>Product Name: {{item.productName}}</p>
-            <p>Description: {{item.description}}</p>
-            <p>Manufacturer: {{item.manufacturer}}</p>
-            <p>Price: ${{item.price}}</p>
-            <br>
-            <div><button v-on:click="addItemToCart(item.itemid)"> Buy Now! </button></div>
-            <br>
-            <br>
+                <b-card 
+                    v-bind:title="item.productName"
+                    v-bind:img-src="item.image"
+                    img-top
+                    class="mb-2"
+                    style="max-width: 20rem;"
+                    >
+                <p class="card-text">Description: {{item.description}}</p>
+                <p>Manufacturer: {{item.manufacturer}}</p>
+                <p>Price: ${{item.price}}</p><button v-on:click="addItemToCart(item.itemid)"> Buy Now! </button>
+                </b-card>
             </b-row>
         </b-col>
         <b-col>

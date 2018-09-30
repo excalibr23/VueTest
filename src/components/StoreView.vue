@@ -25,6 +25,7 @@
             Items in your Shopping Cart:
             <b-row
                 v-for="item in getStoreItems"
+                v-if="item.quantity > 0"
                 v-bind:key="item.itemid"
                 v-bind:title="item.description"
                 >
@@ -49,7 +50,6 @@ export default {
   },
   created(){
       var loadedItems = JSON.parse(window.localStorage.getItem('arr'))
-      console.log(JSON.parse(window.localStorage.getItem('arr')))
       this.$store.commit('loadItems', loadedItems)
   },
   methods:{
@@ -62,7 +62,6 @@ export default {
       saveFile: function() {
         const data = JSON.stringify(this.$store.state.items)
         window.localStorage.setItem('arr', data);
-        console.log(JSON.parse(window.localStorage.getItem('arr')))
       },
   },
   computed: {

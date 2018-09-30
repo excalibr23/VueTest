@@ -32,6 +32,7 @@
                 >
             <p>{{item.quantity}} - {{item.productName}}: Each:{{item.price}} Total:{{item.price*item.quantity}}</p>
             </b-row>
+            <div>Total Cost: {{getCostofItems}}</div>
         </b-col>
     </b-row>
 </b-container>
@@ -53,6 +54,14 @@ export default {
   computed: {
       getStoreItems: function (){
           return this.$store.state.items
+      },
+      getCostofItems: function(){
+          var allItems = this.$store.state.items
+          var total = 0
+          allItems.forEach(function(item){
+              total += (item.quantity * item.price)
+          })
+          return total
       }
   }
 }

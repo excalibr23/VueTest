@@ -73,6 +73,9 @@ export default new Vuex.Store({
         state.items[foundItem].quantity--
       }
     },
+    loadItems(state, items){
+      Vue.set(state, 'items', items)
+    }
   },
   actions: {
     addItemToCart({commit}, itemid){

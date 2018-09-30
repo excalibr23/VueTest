@@ -31,7 +31,9 @@
             <p>{{item.quantity}} - {{item.productName}}: Each:{{item.price}} Total:{{item.price*item.quantity}}</p>
             <button v-on:click="removeItem(item.itemid)">Remove Item</button>
             </b-row>
+            <br><br>
             <div>Total Cost: {{getCostofItems}}</div>
+            <button v-on:click="saveFile()">Save Your Cart</button>
         </b-col>
     </b-row>
 </b-container>
@@ -45,13 +47,23 @@ export default {
         dataHere: ''
     }
   },
+  created(){
+      var loadedItems = JSON.parse(window.localStorage.getItem('arr'))
+      console.log(JSON.parse(window.localStorage.getItem('arr')))
+      this.$store.commit('loadItems', loadedItems)
+  },
   methods:{
       addItemToCart: function(itemid){
           this.$store.dispatch('addItemToCart', itemid)
       },
       removeItem: function(itemid){
           this.$store.dispatch('removeItem', itemid)
-      }
+      },
+      saveFile: function() {
+        const data = JSON.stringify(this.$store.state.items)
+        window.localStorage.setItem('arr', data);
+        console.log(JSON.parse(window.localStorage.getItem('arr')))
+      },
   },
   computed: {
       getStoreItems: function (){

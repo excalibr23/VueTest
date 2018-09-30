@@ -51,12 +51,29 @@ export default new Vuex.Store({
         "description": "16-track Portable SD Recorder, USB Audio Interface, and DAW Control Surface with 8 Microphone Inputs, Built-in Stereo Condenser Microphones, Built-in Effects, 1GB SD Card, and USB - Mac/PC",
         "available": 14
       }
+    ],
+    itemsInCart:[
+      {
+        "itemid": "R16",
+        "productName": "R16",
+        "quantity": 1,
+        "price": 399.99
+      }
     ]
   },
   mutations: {
-
+    addItemToCart(state, item){
+      state.itemsInCart.push({
+        "itemid": item.itemid,
+        "productName": item.productName,
+        "quantity": item.quantity,
+        "price": item.price
+      })
+    }
   },
   actions: {
-
+    addItemToCart({commit}, item){
+      commit('addItemToCart', item)
+    },
   }
 })

@@ -11,15 +11,19 @@
                 v-bind:key="item.itemid"
                 v-bind:title="item.description"
                 >
-            <div>Product Name: {{item.productName}}</div>
-            <div>Description: {{item.description}}</div>
-            <div>Manufacturer: {{item.manufacturer}}</div>
-            <div>Price: ${{item.price}}</div>
+            <p>Product Name: {{item.productName}}</p>
+            <p>Description: {{item.description}}</p>
+            <p>Manufacturer: {{item.manufacturer}}</p>
+            <p>Price: ${{item.price}}</p>
+            <br>
             <div><button> Buy Now! </button></div>
+            
+            <br>
             <br>
             </b-row>
         </b-col>
         <b-col>
+            Items in your Shopping Cart:
         </b-col>
     </b-row>
 </b-container>

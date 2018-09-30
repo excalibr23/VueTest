@@ -66,11 +66,20 @@ export default new Vuex.Store({
       var foundItem = state.items.findIndex(i => i.itemid === itemid)
       console.log(foundItem)
       state.items[foundItem].quantity++
-    }
+    },
+    removeItem(state, itemid){
+      var foundItem = state.items.findIndex(i => i.itemid === itemid)
+      if (state.items[foundItem].quantity > 0){
+        state.items[foundItem].quantity--
+      }
+    },
   },
   actions: {
     addItemToCart({commit}, itemid){
       commit('addItemToCart', itemid)
+    },
+    removeItem({commit}, itemid){
+      commit('removeItem', itemid)
     },
   }
 })

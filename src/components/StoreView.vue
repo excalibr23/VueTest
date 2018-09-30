@@ -12,8 +12,6 @@
                 >
                 <b-card 
                     v-bind:title="item.productName"
-                    v-bind:img-src="item.image"
-                    img-top
                     class="mb-2"
                     style="max-width: 20rem;"
                     >
@@ -31,6 +29,7 @@
                 v-bind:title="item.description"
                 >
             <p>{{item.quantity}} - {{item.productName}}: Each:{{item.price}} Total:{{item.price*item.quantity}}</p>
+            <button v-on:click="removeItem(item.itemid)">Remove Item</button>
             </b-row>
             <div>Total Cost: {{getCostofItems}}</div>
         </b-col>
@@ -49,6 +48,9 @@ export default {
   methods:{
       addItemToCart: function(itemid){
           this.$store.dispatch('addItemToCart', itemid)
+      },
+      removeItem: function(itemid){
+          this.$store.dispatch('removeItem', itemid)
       }
   },
   computed: {

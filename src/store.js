@@ -62,18 +62,15 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    addItemToCart(state, item){
-      state.itemsInCart.push({
-        "itemid": item.itemid,
-        "productName": item.productName,
-        "quantity": item.quantity,
-        "price": item.price
-      })
+    addItemToCart(state, itemid){
+      var foundItem = state.items.findIndex(i => i.itemid === itemid)
+      console.log(foundItem)
+      state.items[foundItem].quantity++
     }
   },
   actions: {
-    addItemToCart({commit}, item){
-      commit('addItemToCart', item)
+    addItemToCart({commit}, itemid){
+      commit('addItemToCart', itemid)
     },
   }
 })
